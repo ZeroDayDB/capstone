@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import DOMPurify from 'dompurify'
->>>>>>> main
 import './style.css'
 import { setupLogin } from './login.js'
 import { setupSignup } from './signup.js'
@@ -15,13 +12,10 @@ const router = () => {
   const path = window.location.pathname
   const app = document.querySelector('#app')
   
-<<<<<<< HEAD
-=======
   if (!app) return // Guard against null app element
   
->>>>>>> main
   // Check authentication for protected routes
-  const protectedRoutes = ['/dashboard', '/help', '/about']
+  const protectedRoutes = ['/dashboard'] // Removed /help and /about
   if (protectedRoutes.includes(path)) {
     const token = localStorage.getItem('userToken')
     const userId = localStorage.getItem('userId')
@@ -31,43 +25,6 @@ const router = () => {
     }
   }
   
-<<<<<<< HEAD
-  switch (path) {
-    case '/login':
-      app.innerHTML = setupLogin()
-      const loginForm = document.querySelector('form')
-      if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-          e.preventDefault()
-          const formData = new FormData(e.target)
-          const username = formData.get('username')
-          const password = formData.get('password')
-          
-          if (username === 'test' && password === 'test') {
-            localStorage.setItem('userToken', 'test-token-123')
-            localStorage.setItem('userId', 'test-user-123')
-            window.location.pathname = '/dashboard'
-          } else {
-            alert('Invalid credentials. Use username: test, password: test')
-          }
-        })
-      }
-      break
-    case '/signup':
-      app.innerHTML = setupSignup()
-      break
-    case '/dashboard':
-      app.innerHTML = setupDashboard()
-      break
-    case '/help':
-      app.innerHTML = setupHelp()
-      break
-    case '/status':
-      app.innerHTML = setupStatus()
-      break
-    case '/about':
-      app.innerHTML = setupAbout()
-=======
   // Clear any existing event listeners by replacing the app content
   app.innerHTML = ''
   
@@ -123,7 +80,6 @@ const router = () => {
     case '/about':
       content = setupAbout()
       app.innerHTML = content
->>>>>>> main
       break
     default:
       app.innerHTML = `
@@ -159,23 +115,11 @@ const router = () => {
           <footer class="bg-white border-t border-primary-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
               <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-<<<<<<< HEAD
-                <div class="flex items-center gap-4 text-primary-500">
-                  <span>NO TIME AI ©2025</span>
-                  <a href="#" class="hover:text-primary-700">Privacy</a>
-                  <a href="#" class="hover:text-primary-700">Terms</a>
-                </div>
-                <div class="flex items-center gap-6 text-primary-600">
-                  <a href="/status" class="hover:text-primary-800">API STATUS</a>
-                  <a href="/about" class="hover:text-primary-800">About Us</a>
-                </div>
-=======
                 <div class="flex items-center gap-6">
                   <a href="/about" class="text-primary-600 hover:text-primary-900">About</a>
                   <a href="/status" class="text-primary-600 hover:text-primary-900">Status</a>
                 </div>
                 <p class="text-primary-500">&copy; 2024 NO TIME AI. All rights reserved.</p>
->>>>>>> main
               </div>
             </div>
           </footer>
@@ -184,23 +128,6 @@ const router = () => {
   }
 }
 
-<<<<<<< HEAD
-// Handle navigation
-window.addEventListener('popstate', router)
-window.addEventListener('load', router)
-
-// Handle navigation links
-document.addEventListener('click', (e) => {
-  if (e.target.matches('a')) {
-    e.preventDefault()
-    const href = e.target.getAttribute('href')
-    if (href && href !== '#') {
-      window.history.pushState({}, '', href)
-      router()
-    }
-  }
-})
-=======
 // Initialize router
 document.addEventListener('DOMContentLoaded', () => {
   router()
@@ -211,4 +138,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle navigation links
   document.addEventListener('click', (e) => {
     const link = e.target.closest('a')
->>>>>>> main
+    if (link) {
+      e.preventDefault()
+      const href = link.getAttribute('href')
+      if (href && href !== '#') {
+        // Check if user is authenticated and trying to access home page
+        if (href === '/' && localStorage.getItem('userToken')) {
+          window.history.pushState({}, '', '/dashboard')
+          router()
+        } else {
+          window.history.pushState({}, '', href)
+          router()
+        }
+      }
+    }
+  })
+})

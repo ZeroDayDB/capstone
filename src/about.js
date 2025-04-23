@@ -1,9 +1,13 @@
 export function setupAbout() {
+<<<<<<< HEAD
   const handleLogout = () => {
     localStorage.removeItem('userToken')
     localStorage.removeItem('userId')
     window.location.pathname = '/login'
   }
+=======
+  const isLoggedIn = localStorage.getItem('userToken') && localStorage.getItem('userId')
+>>>>>>> main
 
   return `
     <div class="min-h-screen bg-primary-50">
@@ -13,12 +17,17 @@ export function setupAbout() {
             <div class="flex items-center gap-8">
               <a href="/" class="text-2xl font-bold text-primary-900 hover:text-primary-800">NO TIME AI</a>
               <div class="hidden md:flex items-center gap-2">
+<<<<<<< HEAD
                 <a href="/dashboard" class="nav-link">Dashboard</a>
+=======
+                ${isLoggedIn ? '<a href="/dashboard" class="nav-link">Dashboard</a>' : ''}
+>>>>>>> main
                 <a href="/help" class="nav-link">Help</a>
                 <a href="/about" class="nav-link active">About</a>
               </div>
             </div>
             <div class="flex items-center gap-4">
+<<<<<<< HEAD
               <button onclick="handleLogout()" class="btn btn-danger">
                 Logout
               </button>
@@ -26,6 +35,17 @@ export function setupAbout() {
           </div>
           <div class="md:hidden flex items-center gap-2 pb-4">
             <a href="/dashboard" class="nav-link flex-1 text-center">Dashboard</a>
+=======
+              ${isLoggedIn 
+                ? '<button onclick="localStorage.removeItem(\'userToken\'); localStorage.removeItem(\'userId\'); window.location.pathname = \'/login\'" class="btn btn-danger">Logout</button>'
+                : `<a href="/login" class="nav-link">Login</a>
+                   <a href="/signup" class="btn btn-primary">Sign Up</a>`
+              }
+            </div>
+          </div>
+          <div class="md:hidden flex items-center gap-2 pb-4">
+            ${isLoggedIn ? '<a href="/dashboard" class="nav-link flex-1 text-center">Dashboard</a>' : ''}
+>>>>>>> main
             <a href="/help" class="nav-link flex-1 text-center">Help</a>
             <a href="/about" class="nav-link active flex-1 text-center">About</a>
           </div>

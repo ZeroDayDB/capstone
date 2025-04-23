@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "vite-starter",
+=======
+  "name": "no-time-ai",
+>>>>>>> main
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@supabase/supabase-js": "^2.39.3",
     "dompurify": "^3.0.8"
   },
@@ -17,5 +22,15 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "vite": "^6.3.1"
+=======
+    "@supabase/supabase-js": "^2.39.0",
+    "dompurify": "^3.0.6"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^5.0.0"
+>>>>>>> main
   }
 }
