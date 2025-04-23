@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-800 text-white hover:bg-primary-700;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+  
+  .nav-link {
+    @apply px-4 py-2 rounded-lg text-primary-600 hover:bg-primary-100 transition-colors duration-200;
+  }
+  
+  .nav-link.active {
+    @apply bg-primary-100 text-primary-900;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm p-6;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-2 rounded-lg border border-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-primary-700 mb-2;
+  }
+
+  .progress-container {
+    @apply mt-4;
+  }
+
+  .progress-bar {
+    @apply transition-all duration-200 ease-out;
+  }
+}
+
+.header {
+  @apply bg-white border-b border-primary-200;
+}
+
+.nav {
+  @apply flex items-center gap-6;
+}
+
+.logo {
+  @apply text-2xl font-bold text-primary-900;
+}
+
+.hero {
+  @apply max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12;
+}
+
+.text-content {
+  @apply flex-1;
+}
+
+.text-content h1 {
+  @apply text-4xl sm:text-5xl font-bold text-primary-900 mb-6;
+}
+
+.text-content p {
+  @apply text-lg text-primary-600 mb-8;
+}
+
+.mockup {
+  @apply flex-1;
+}
+
+.mockup img {
+  @apply rounded-xl shadow-2xl w-full;
+}
+
+.footer {
+  @apply bg-white border-t border-primary-200 py-8 px-4;
+}
+
+.footer .left {
+  @apply flex items-center gap-4 text-primary-500;
+}
+
+.footer .links {
+  @apply flex items-center gap-6 text-primary-600;
+}
+
+.auth-container {
+  @apply min-h-screen flex items-center justify-center bg-primary-50 px-4;
+}
+
+.auth-form {
+  @apply w-full max-w-md bg-white rounded-xl shadow-sm p-8;
+}
+
+.dashboard-container {
+  @apply min-h-screen bg-primary-50;
+}
+
+.dashboard-nav {
+  @apply bg-white border-b border-primary-200 px-4 py-4;
+}
+
+.dashboard-content {
+  @apply max-w-7xl mx-auto px-4 py-8;
+}
+
+.meetings-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8;
+}
+
+.meeting-card {
+  @apply bg-white rounded-xl shadow-sm p-6 flex flex-col gap-4;
+}
+
+.upload-section {
+  @apply bg-white rounded-xl shadow-sm p-6 mb-8;
+}
+
+.help-content, .about-content {
+  @apply max-w-3xl mx-auto bg-white rounded-xl shadow-sm p-8;
+}
